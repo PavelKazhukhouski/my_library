@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/Library"
+    <Resource name="jdbc/library"
               auth="Container"
               description="DB Connection"
-              type="jakarta.sql.DataSource"
+              type="javax.sql.DataSource"
               username="postgres"
               password="postgres"
               driverClassName="org.postgresql.Driver"

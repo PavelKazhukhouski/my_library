@@ -8,23 +8,30 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class DataBase {
-    private static Connection conn;
-    private static InitialContext ic;
+    private static final Logger LOGGER = Logger.getLogger(DataBase.class.getName());
     private static DataSource ds;
+
+    static {
+        try {
+            InitialContext ic = new InitialContext();
+            ds = (DataSource) ic.lookup("java:comp/env/jdbc/library");
+        } catch (NamingException ex) {
+            LOGGER.log(Level.SEVERE, "Error looking up DataSource", ex);
+        }
+    }
 
     public static Connection getConnection() {
         try {
-            ic = new InitialContext();
-            ds = (DataSource) ic.lookup("java:comp/env/jdbc/Library");
-            if (conn==null) {
-                conn = ds.getConnection();
+            if (ds != null) {
+                return ds.getConnection();
+            } else {
+                throw new SQLException("DataSource is not initialized");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, "Error getting connection", ex);
+            return null;
         }
-        return conn;
     }
 }

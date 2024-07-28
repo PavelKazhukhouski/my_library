@@ -1,25 +1,24 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.my_library.beans.Author" %>
 <%@ page import="com.my_library.beans.AuthorList" %>
-
-<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="ru" dir="ltr">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <title>Онлайн библиотека</title>
     <link rel="stylesheet" href="css/style_main.css" type="text/css">
 </head>
 <body>
-    <div class="container">
+    <div class="conteiner">
         <div class="header">
-            <img src="../images/logo.png" alt="Место для логотипа" class="logo">
-            <form class="search_form" name="search_form" method="POST">
-                <img src="images/search.jpg" alt="Поиск">
-                <input type="text" name="search_String" value="" size="100">
-                <input type="submit" value="Поиск" name="search_button">
+            <img alt="Место для логотипа" name="logo" width="100%" height="90"/>
+            <form class="search_form" method="POST">
+                <img src="images/lib.png"/>
+                <input type="text" name="search_String" value="" size="100"/>
+                <input type="submit" name="search_button" value="Поиск" />
                 <select name="search_option">
-                    <option value="title">Название</option>
-                    <option value="author">Автор</option>
+                    <option>Название</option>
+                    <option>Автор</option>
                 </select>
             </form>
         </div>
@@ -27,19 +26,17 @@
         <div class="sidebar1">
             <h4>Список авторов:</h4>
             <ul class="nav">
-                <%
-                AuthorList authorList = new AuthorList();
-                for (Author author : authorList.getAuthorList()) {
+                <% AuthorList authorList = new AuthorList();
+                    for (Author author : authorList.getAuthorList()) {
                 %>
-                <li><a href="#"><%= author.getName() %></a></li>
+                <li><a href="#"><%=author.getName()%></a></li>
                 <% } %>
             </ul>
             <p>&nbsp;</p>
         </div>
-
         <div class="content">
-            <h1>&nbsp;</h1>
-            <p>&nbsp;</p>
+        <h1>&nbsp;</h1>
+        <p>&nbsp;</p>
         </div>
     </div>
 </body>

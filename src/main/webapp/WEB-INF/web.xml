@@ -8,10 +8,17 @@
         <welcome-file>pages/index.jsp</welcome-file>
     </welcome-file-list>
 
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/library</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <!--
     <servlet>
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>com.my_library.servlet.TestServlet</servlet-class>
-        <!-- param for this servlet -->
+       param for this servlet
         <init-param>
             <param-name>hello</param-name>
             <param-value>hello</param-value>
@@ -21,21 +28,13 @@
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/xxx</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
-    <resource-ref>
-        <description>DB Connection</description>
-        <res-ref-name>jdbc/Library</res-ref-name>
-        <res-type>jakarta.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>
-
-
-    <!-- servlet context -->
+    <!-- servlet context
     <context-param>
         <param-name>message</param-name>
         <param-value>Hello Servlets</param-value>
-    </context-param>
+    </context-param>-->
 
     <!--<error-page>
         <error-code>404</error-code>
