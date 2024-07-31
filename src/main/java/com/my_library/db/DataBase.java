@@ -18,7 +18,7 @@ public class DataBase {
             InitialContext ic = new InitialContext();
             ds = (DataSource) ic.lookup("java:comp/env/jdbc/library");
         } catch (NamingException ex) {
-            LOGGER.log(Level.SEVERE, "Error looking up DataSource", ex);
+            LOGGER.log(Level.SEVERE, "Error   DataSource", ex);
         }
     }
 

@@ -1,0 +1,11 @@
+<%@ page import="com.my_library.beans.Genre" %>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sidebar1">
+            <h4>Список авторов:</h4>
+            <ul class="nav">
+                <jsp:useBean id="genreList" class="com.my_library.beans.genreList" scope="application"/>
+                <c:forEach var="author" items="${authorList.getGenreList()}">
+                      <li><a href="#">${author.name}</a></li>
+                </c:forEach>
+                        </ul>
+                    </div>

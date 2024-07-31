@@ -11,38 +11,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AuthorList {
-    private final ArrayList<Author> authorList = new ArrayList<>();
 
-    private ArrayList<Author> getAuthors() {
-        authorList.add(new Author("Valera"));
-        authorList.add(new Author("Valera1"));
-        authorList.add(new Author("Valera2"));
-        authorList.add(new Author("Valera3"));
-//        try {
-//            Connection conn = DataBase.getConnection();
-//
-//            assert conn != null;
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery("select * from author");
-//            while (rs.next()) {
-//                Author author = new Author();
-//                String df = rs.getString("author_name");
-//                author.setName(rs.getString("author_name"));
-//                authorList.add(author);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AuthorList.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+    public ArrayList<Author> getAuthorList() {
+        ArrayList<Author> authorList = new ArrayList<>();
+        try (Connection conn = DataBase.getConnection()) {
+            assert conn != null;
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("select * from author order by author_name")) {
 
+                while (rs.next()) {
+                    Author author = new Author();
+                    author.setName(rs.getString("author_name"));
+                    authorList.add(author);
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(AuthorList.class.getName()).log(Level.SEVERE, null, e);
+        }
         return authorList;
     }
 
-    public ArrayList<Author> getAuthorList() {
-        if (!authorList.isEmpty()) {
-            return authorList;
-        } else {
-            return getAuthors();
-
-        }
-    }
 }
