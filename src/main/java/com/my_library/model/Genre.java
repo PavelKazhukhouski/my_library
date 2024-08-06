@@ -1,17 +1,22 @@
-package com.my_library.beans;
+package com.my_library.model;
 
 public class Genre {
-    private int id;
+    private long id;
     private String name;
 
     public Genre() {
     }
 
-    public int getId() {
+    public Genre(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

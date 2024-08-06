@@ -1,9 +1,8 @@
-<%@ page import="java.util.ArrayList"%>
 <%@ page import="com.my_library.beans.Book"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-    <% include file="../jspf/left_menu.jspf" %>
+    <% include file="jspf/left_menu.jspf" %>
 
     <%request.setCharacterEncoding("UTF-8");
 
@@ -20,27 +19,26 @@
 
     <div class="book_list">
         <h3>${param.name}</h3>
+        <table cellpadding="30" style="font-size: 12px;"
 
         <%
-            ArrayList<Book> list = bookList.getBooksByGenre(genreId);
-            session.setAttribute("currentBookList", list);
-            for (Book book : list) {
+            for (Book book : bookList.getBooksGenre(genreId) {
         %>
-
-    <div class="book_info">
-       <div class="book_title">
-         <p><%book.getName()%></p>
-         </div>
-         <div class="book+image">
-           <img src="<%=book.getImageURL() %>" height="250" width="190" alt="Обложка"/>
-         </div>
-         <div class="book_details">
-         <br><strong>ISBN:</strong><%=book.getIsbn()%>
-         <br><strong>Publisher:</strong><%=book.getPublisher() %>
-         <br><strong>Page count:</strong><%=book.getPageCount() %>
-         <br><strong>Количество стараниц:</strong><%=book.getPublishDate() %>
-         <br><strong>Author</strong><%=book.getAuthor() %>
-         <p style="margin:10px;"> <a href="#">Читать</a><p>
-       </div>
-    </div>
+        <tr>
+            <td style="width:400px;height: 100px;">
+                <p style="color:#378de5; font-weight: bold; font-size: 15px;"> <%=book.getName()%></p>
+                <br><strong>ISBN:</strong> <%=book.getIsbn()%>
+                <br><strong>Publisher:</strong> <%=book.getPublisher()%>
+                <br><strong>Page count:</strong> <%=book.getPageCount()%>
+                <br><strong>Year of publication:</strong> <%=book.getPublishDate()%>
+                <br><strong>Author:</strong> <%=book.getAuthor()%>
+                <p style="margin:10px;"> <a href="#">Read</a></p>
+            </td>
+            <td style="width:150px;height: 100px;">
+                image
+            </td>
+            </td>
+            <%}%>
+        </table>
+        </div>
 

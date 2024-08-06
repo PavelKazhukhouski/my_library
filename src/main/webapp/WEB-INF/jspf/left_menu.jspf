@@ -1,0 +1,9 @@
+<div class="sidebar1">
+            <h4>Genres:</h4>
+            <ul class="nav">
+                <c:forEach var="genre" items="${genreList}">
+                    <li><a href="books.jsp?genre_id=${genre.id}">${genre.name}</a></li>
+                </c:forEach>
+            </ul>
+        </div>
+

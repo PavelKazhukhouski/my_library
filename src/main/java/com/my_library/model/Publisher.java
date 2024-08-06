@@ -1,13 +1,13 @@
-package com.my_library.beans;
+package com.my_library.model;
 
 public class Publisher {
-    private int id;
+    private long id;
     private String publisherName;
 
     public Publisher() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

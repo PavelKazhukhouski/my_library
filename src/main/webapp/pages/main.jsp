@@ -1,7 +1,5 @@
 <%@ page import="com.my_library.beans.Author" %>
 <%@ page import="com.my_library.beans.AuthorList" %>
-<%@ page import="com.my_library.beans.Genre" %>
-<%@ page import="com.my_library.beans.GenreList" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -29,12 +27,11 @@
         <div class="sidebar1">
             <h4>Список авторов:</h4>
             <ul class="nav">
-                <jsp:useBean id="genreList" class="com.my_library.beans.GenreList" scope="application"/>
-                <c:forEach var="genre" items="${genreList.getGenreList()}">
-                      <li><a href="#">${genre.name}</a></li>
+                <c:forEach var="author" items="${authorList.authorList}">
+                    <li><a href="#">${author.name}</a></li>
                 </c:forEach>
-                        </ul>
-                    </div>
+            </ul>
+        </div>
 
         <div class="content">
             <h1>Добро пожаловать!</h1>
@@ -43,3 +40,4 @@
     </div>
 </body>
 </html>
+
